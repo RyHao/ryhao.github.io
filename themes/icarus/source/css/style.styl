@@ -62,6 +62,13 @@ code
 
 #container
     position: relative
+    & > .content
+        position: relative
+        top: 64px
+        @media mq-mobile
+            top: 85px
+        @media mq-mini
+            top: 85px
     & > .outer
         margin-bottom: 30px
 

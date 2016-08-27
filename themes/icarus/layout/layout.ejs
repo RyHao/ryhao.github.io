@@ -2,7 +2,7 @@
 <body>
     <div id="container">
         <%- partial('common/header') %>
-        <div class="outer">
+        <div class="content outer">
             <% if (theme.customize.profile.enabled) { %>
                 <%- partial('common/profile', null, {cache: !config.relative_link}) %>
             <% } %>
