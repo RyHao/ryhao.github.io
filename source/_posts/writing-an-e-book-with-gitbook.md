@@ -25,7 +25,7 @@ GitBook 是用 node.js 的 npm 管理工具搭建的一種建立電子書的套�
 
 執行以下指令安裝 [gitbook 套件](https://github.com/GitbookIO/gitbook)，安裝之前記得要先安裝 npm
 
-	sudo npm install -g gitbook-cli
+	$ sudo npm install -g gitbook-cli
 
 安裝好之後在你要放電子書的目錄下建立這兩個檔案
 
@@ -41,7 +41,7 @@ Gitbook 最大的好處就是結構簡單，只有這兩個主要的檔案
 
 設定好這兩個檔案內容後，接著執行下面的指令讓它自動去產生對應的檔案
 
-	gitbook init
+	$ gitbook init
 
 執行後就會看到目錄被自動建立起來
 
@@ -51,7 +51,7 @@ Gitbook 最大的好處就是結構簡單，只有這兩個主要的檔案
 
 最後，別忘了如果想要預覽電子書的樣貌，可以執行
 
-	gitbook serve
+	$ gitbook serve
 
 這樣就會自動利用 node 啟動一個小型 HTTP Server Port 預設是 4000
 
