@@ -25,6 +25,7 @@
         "hexo-server": "^0.2.0"
     },
     "scripts": {
+        "postinstall": "npm run cp-theme-config",
         "cp-theme-config": "cp _config.theme.yml ./themes/next/_config.yml"
     }
 }
