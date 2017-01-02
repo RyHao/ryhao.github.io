@@ -17,6 +17,9 @@ before_install:
   - cp .travis/ssh_config ~/.ssh/config
   - git config --global user.name "RyHao"
   - git config --global user.email "kinghao914@gmail.com"
+  - git submodule init
+  - git submodule update
+  - npm run mv-theme-config
 install:
   - npm install
 script:
