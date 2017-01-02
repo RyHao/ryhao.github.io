@@ -2,7 +2,7 @@
 title: Writing an e-book with Gitbook
 date: 2016-08-27 22:27:06
 thumbnail: https://www.gitbook.com/assets/images/logo/128.png
-categories: Tools
+categories: Tool
 tags:
 	- Gitbook
 ---

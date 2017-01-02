@@ -6,7 +6,7 @@
 title: RyHao
 subtitle:
 description: Be a front-end master
-author: GP
+author: RyHao
 language: en
 timezone:
 
@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: casual
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -71,3 +71,10 @@ deploy:
   type: git
   repo: git@github.com:RyHao/ryhao.github.io.git
   branch: master
+
+# Search
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
