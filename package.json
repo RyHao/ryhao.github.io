@@ -25,6 +25,6 @@
         "hexo-server": "^0.2.0"
     },
     "scripts": {
-        "mv-theme-config": "mv _config.theme.yml ./themes/next/_config.yml"
+        "cp-theme-config": "cp _config.theme.yml ./themes/next/_config.yml"
     }
 }

@@ -19,7 +19,7 @@ before_install:
   - git config --global user.email "kinghao914@gmail.com"
   - git submodule init
   - git submodule update
-  - npm run mv-theme-config
+  - npm run cp-theme-config
 install:
   - npm install
 script:
