@@ -25,5 +25,5 @@ tags:
 
 1. {% post_link jenkins-master-node-installation-guide %}
 2. {% post_link jenkins-slave-agent-node-installation-guide %}
-3. Jenkins Build-up a task
+3. {% post_link jenkins-build-up-a-task %}
 
