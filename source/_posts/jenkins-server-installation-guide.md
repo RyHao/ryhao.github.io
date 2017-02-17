@@ -23,7 +23,7 @@ tags:
 
 ### Next step
 
-1. Jenkins Master Node Installation Guide
+1. {% post_link jenkins-master-node-installation-guide %}
 2. Jenkins Slave Agent Node Installation Guide
 3. Jenkins Build-up a task
 
