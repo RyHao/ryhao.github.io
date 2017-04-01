@@ -23,9 +23,5 @@
         "hexo-renderer-scss": "^1.0.2",
         "hexo-renderer-stylus": "^0.3.1",
         "hexo-server": "^0.2.0"
-    },
-    "scripts": {
-        "postinstall": "npm run cp-theme-config",
-        "cp-theme-config": "cp _config.theme.yml ./themes/next/_config.yml"
     }
 }
