@@ -1,6 +1,7 @@
 ---
-title: LeetCode - 2017/01/04
+title: LeetCode - Two Sum
 date: 2017-01-04 00:08:38
+desc: Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 categories: Programming
 tags:
 	- LeetCode
@@ -15,10 +16,9 @@ You may assume that each input would have exactly one solution.
 
 #### Example:
 
-	Given nums = [2, 7, 11, 15], target = 9,
+Given nums = `[2, 7, 11, 15]`, target = `9`,
 
-	Because nums[0] + nums[1] = 2 + 7 = 9,
-	return [0, 1].
+Because `nums[0] + nums[1] = 2 + 7 = 9`, return `[0, 1]`.
 
 <!-- more -->
 
@@ -66,4 +66,4 @@ You may assume that each input would have exactly one solution.
 			return result
 	};
 
-[Source code](https://github.com/RyHao/LeetCode/blob/master/src/TwoSum.js "Source code")
+[Source code](https://github.com/RyHao/LeetCode/blob/master/src/twoSum.js "Source code")
