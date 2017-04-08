@@ -66,4 +66,4 @@ Because `nums[0] + nums[1] = 2 + 7 = 9`, return `[0, 1]`.
 			return result
 	};
 
-[Source code](https://github.com/RyHao/LeetCode/blob/master/src/twoSum.js "Source code")
+[Source code](https://github.com/RyHao/LeetCode/blob/master/JavaScript/src/twoSum.js "Source code")

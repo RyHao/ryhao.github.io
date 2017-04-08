@@ -64,4 +64,4 @@ Given `pwwkew`, the answer is `wke`, with the length of 3. Note that the answer 
 		}, 0);
 	};
 
-[Source code](https://github.com/RyHao/LeetCode/blob/master/src/lengthOfLongestSubstring.js "Source code")
+[Source code](https://github.com/RyHao/LeetCode/blob/master/JavaScript/src/lengthOfLongestSubstring.js "Source code")
