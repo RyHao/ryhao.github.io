@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Ryan Lu,ryhao.tw@gmail.com"><title>LeetCode - Length Of Longest Substring · RyHao</title><meta name="description" content="Given a string, find the length of the longest substring without repeating characters."><meta name="keywords" content="Hexo,HTML,CSS,JS,JavaScript,React,Front-End"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">RyHao</a></h3><div class="description"><p>Excelsior</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/RyanHCLu"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/ryanhclu"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/RyHao"><i class="fa fa-github"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai</a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">Home</a></li><li><a href="/about">About</a></li><li><a href="/archives">Archive</a></li><li><a href="/links">Links</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="/uploads/avatar.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>LeetCode - Length Of Longest Substring</a></h3></div><div class="post-content"><h1 id="Longest-Substring-Without-Repeating-Characters"><a href="#Longest-Substring-Without-Repeating-Characters" class="headerlink" title="Longest Substring Without Repeating Characters"></a>Longest Substring Without Repeating Characters</h1><p>Given a string, find the length of the longest substring without repeating characters.</p>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h4><p>Given <code>abcabcbb</code>, the answer is <code>abc</code>, which the length is 3.</p>
+<p>Given <code>bbbbb</code>, the answer is <code>b</code>, with the length of 1.</p>
+<p>Given <code>pwwkew</code>, the answer is <code>wke</code>, with the length of 3. Note that the answer must be a substring, <code>pwke</code> is a subsequence and not a substring.</p>
+<a id="more"></a>
+<h4 id="First-Time-Solution"><a href="#First-Time-Solution" class="headerlink" title="First Time Solution:"></a>First Time Solution:</h4><pre><code>/**
+* @param {string} s
+* @return {number}
+*/
+var lengthOfLongestSubstring = function(s) {
+        if (!s.length) return 0;
+        var start = 0;
+        var maxLength = 0;
+        var charMap = new Map();
+        for (var i = 0 ; i &lt; s.length ; i += 1) {
+                var c = s[i];
+                if (charMap.has(c) &amp;&amp; start &lt;= charMap.get(c)) {
+                        start = charMap.get(c) + 1;
+                } else {
+                        maxLength = Math.max(maxLength, i - start + 1);
+                }
+                charMap.set(c, i);
+        }
+        return maxLength;
+};            
+</code></pre><h4 id="Final-Solution"><a href="#Final-Solution" class="headerlink" title="Final Solution:"></a>Final Solution:</h4><pre><code>/**
+* @param {string} s
+* @return {number}
+*/
+var lengthOfLongestSubstring = function (s) {
+    const map = {};
+    var left = 0;
+
+    return s.split(&apos;&apos;).reduce((max, v, i) =&gt; {
+        left = map[v] &gt;= left ? map[v] + 1 : left;
+        map[v] = i;
+        return Math.max(max, i - left + 1);
+    }, 0);
+};
+</code></pre><p><a href="https://github.com/RyHao/LeetCode/blob/master/JavaScript/src/lengthOfLongestSubstring.js" title="Source code" target="_blank" rel="external">Source code</a></p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-04-04</span><i class="fa fa-comment-o"></i><a href="/2017/04/04/leetcode-length-of-longest-substring/#comments">Comments</a><i class="fa fa-tag"></i><a href="/categories/programming/" title="Programming" class="tag">Programming </a><a href="/tags/leetcode/" title="LeetCode" class="tag">LeetCode </a><a href="/tags/two-pointers/" title="Two Pointers" class="tag">Two Pointers </a><a href="/tags/hash-table/" title="Hash Table" class="tag">Hash Table </a><a href="/tags/string/" title="String" class="tag">String </a></div></div></div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=,https://ryhao.github.io/2017/04/04/leetcode-length-of-longest-substring/,RyHao,LeetCode - Length Of Longest Substring,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/02/20/jenkins-build-up-a-task/" title="Jenkins Build-up a task" class="btn">Prev post</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/04/08/leetcode-3sum-closest/" title="LeetCode - 3Sum Closest" class="btn">Next post</a></li></ul></div><a id="comments"></a><div id="disqus_thread"></div><script>var disqus_shortname = 'ryanlugp';
+var disqus_identifier = '2017/04/04/leetcode-length-of-longest-substring/';
+var disqus_title = 'LeetCode - Length Of Longest Substring';
+var disqus_url = 'https://ryhao.github.io/2017/04/04/leetcode-length-of-longest-substring/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//ryanlugp.disqus.com/count.js" async></script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-46467226-3', 'auto');
+ga('send', 'pageview');</script></body></html>

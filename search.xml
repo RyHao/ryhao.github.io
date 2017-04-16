@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+    
+    <entry>
+      <title><![CDATA[Flow - installation]]></title>
+      <url>%2F2017%2F04%2F16%2Fflow-installation%2F</url>
+      <content type="text"><![CDATA[Flow 是什麼？Flow 是由 Facebook 開發出來的一個型別檢查工具，是為了修補 JavaScript 弱型別的問題，使得在開發上大大提升程式碼的可讀性和可維護性。 這篇文章主要是為了記錄安裝 Flow 遇到的一些問題，以防未來老人痴呆什麼都不記得，隨著年齡增長，記性總是越來越差，廢話不多說，就開始吧。 Installation這次發現 Flow 的官網改版之後其實變得好讀很多，沒有太多廢話的資訊，安裝步驟也很明確，基本上 Follow 官網的安裝步驟根本簡單上手。 Setup Compiler 很貼心的 Facebook 把兩種 Package management 的安裝步驟都分別列出了，只需要選擇你想要用的就好了，另外 Compiler 則分為兩種 Babel 和 flow-remove-types，Babel 應該是眾所皆知的用來轉換 JavaScript 語法的工具了，搭配上 flow 的 preset 就可以輕易的把 Flow type annotations 移除，而flow-remove-types 則是一個輕量級的工具，專為 Flow 設計用來移除 Flow type annotations，如果你的開發環境完全不需要用到 Babel 事實上選用 flow-remove-types 當作 compiler 會比較好。 Setup Flow 因為我是選擇 yarn 安裝，這裡遇到一個問題，最後的 Note 寫到 you may need to run flow init before executing yarn run flow. 但是如果你沒有把 flow 安裝在 global 根本就找不到 flow 這個指令，這邊有兩個選擇 將 flow-bin 安裝在 global 環境 yarn global add flow-bin 接著再執行 flow 初始化 flow init 因為 flow-bin 已經安裝在 local 了，所以其實可以直接執行初始化指令 yarn run flow init 以上就是簡單的 Flow 安裝，開始使用 Flow 進行開發吧！]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[LeetCode - 3Sum Closest]]></title>
+      <url>%2F2017%2F04%2F08%2Fleetcode-3sum-closest%2F</url>
+      <content type="text"><![CDATA[3Sum ClosestGiven an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution. For example, given array S = {-1 2 1 -4}, and target = 1. The sum that is closest to the target is 2. (-1 + 2 + 1 = 2). Final Solution:class Solution(object): def threeSumClosest(self, nums, target): &quot;&quot;&quot; :type nums: List[int] :type target: int :rtype: int &quot;&quot;&quot; nums.sort() final_sum = nums[0] + nums[1] + nums[2] for i in range(len(nums) - 2): j, k = i+1, len(nums) - 1 while j &lt; k: sum = nums[i] + nums[j] + nums[k] if sum == target: return sum if abs(sum - target) &lt; abs(final_sum - target): final_sum = sum if sum &lt; target: j += 1 elif sum &gt; target: k -= 1 return final_sum Source code]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[LeetCode - Length Of Longest Substring]]></title>
+      <url>%2F2017%2F04%2F04%2Fleetcode-length-of-longest-substring%2F</url>
+      <content type="text"><![CDATA[Longest Substring Without Repeating CharactersGiven a string, find the length of the longest substring without repeating characters. Example:Given abcabcbb, the answer is abc, which the length is 3. Given bbbbb, the answer is b, with the length of 1. Given pwwkew, the answer is wke, with the length of 3. Note that the answer must be a substring, pwke is a subsequence and not a substring. First Time Solution:/** * @param {string} s * @return {number} */ var lengthOfLongestSubstring = function(s) { if (!s.length) return 0; var start = 0; var maxLength = 0; var charMap = new Map(); for (var i = 0 ; i &lt; s.length ; i += 1) { var c = s[i]; if (charMap.has(c) &amp;&amp; start &lt;= charMap.get(c)) { start = charMap.get(c) + 1; } else { maxLength = Math.max(maxLength, i - start + 1); } charMap.set(c, i); } return maxLength; }; Final Solution:/** * @param {string} s * @return {number} */ var lengthOfLongestSubstring = function (s) { const map = {}; var left = 0; return s.split(&apos;&apos;).reduce((max, v, i) =&gt; { left = map[v] &gt;= left ? map[v] + 1 : left; map[v] = i; return Math.max(max, i - left + 1); }, 0); }; Source code]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Jenkins Build-up a task]]></title>
+      <url>%2F2017%2F02%2F20%2Fjenkins-build-up-a-task%2F</url>
+      <content type="text"><![CDATA[Click 新增作業 建置 free style 專案 原始碼管理 - Git Put private key in Crediential Put public key in gitlab How to gen keyssh-keygen -t rsa -C &quot;test@climax.com.tw&quot; pub: cat ~/.ssh/id_rsa.pub private: cat ~/.ssh/id_rsa http://10.1.2.150:53180/help/ssh/README Add Credentials Keys Domain: Global credentials (unrestricted) Kind: SSH Username with private key Username: jenkins Privae Key: From the Jenkins master ~/.ssh Set the repository URL and change the ssh key Build Trigger 建置環境 (case by case) 建置和建置後動作 (case by case)]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Jenkins Slave Agent Node Installation Guide]]></title>
+      <url>%2F2017%2F02%2F19%2Fjenkins-slave-agent-node-installation-guide%2F</url>
+      <content type="text"><![CDATA[Master node will start the slave agent on the slave machne via SSH. Automatic SSH login without password from master node to the slave node is needed. Master node will be running as a specific user called Jenkins to start the slave agent. SSH Login to Jenkins master node$ ssh $USER@$IP $USER is the master server user name. $IP is the master server ip Switch to jenkins user$ sudo -iu jenkins Create a ssh key if the ssh key not exist.$ ssh-keygen -t rsa Create a .ssh folder to slave server$ ssh $USER@$IP mkdir -p .ssh $USER is the slave agent user name. $IP is the slave agent server ip Write the ssh key to the authorized_keys of slave server$ cat .ssh/id_rsa.pub | ssh $USER@$IP &apos;cat &gt;&gt; .ssh/authorized_keys&apos; $USER is the slave agent user name. $IP is the slave agent server ip SSH to slave agent server$ ssh $USER@$IP $USER is the slave agent user name. $IP is the slave agent server ip Create the bin folder$ mkdir bin &amp;&amp; cd bin/ Download the .jar file from master server$ wget http://$URL/jnlpJars/slave.jar $URL is your jenkins master server url. ex: 10.0.1.1:8080 Check the java has installed on slave agent server, if no please install it.Go to 管理 Jenkins &gt; 管理節點 on jenkins web.Click New Node/新增節點 New Node Settings Go back to check connection]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Jenkins Master Node Installation Guide]]></title>
+      <url>%2F2017%2F02%2F18%2Fjenkins-master-node-installation-guide%2F</url>
+      <content type="text"><![CDATA[Install Jenkins$ wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add - $ sudo sh -c &apos;echo deb http://pkg.jenkins-ci.org/debian binary/ &gt; /etc/apt/sources.list.d/jenkins.list&apos; $ sudo apt-get update $ sudo apt-get install jenkins $ sudo service jenkins start | stop | restart Go to browser. http://localhost:8080 http://www.arthurtoday.com/2015/04/ubuntu-install-jenkins-by-atp.html My Jenkins Plugins List Backup plugin cucumber-slack-notifier (option) Email Extension Plugin GitHub Organization Folder Plugin (option) GitLab Plugin NodeJS Plugin Simple Theme Plugin (option) Slack Notification Plugin SSH Slaves plugin Timestamper Workspace Cleanup Plugin Jenkins &gt; System ConfigurationEmail Extension Plugin Email Notification Global Slack Notifier Settings Simple Theme PluginCSS: http://afonsof.com/jenkins-material-theme/dist/material-indigo.css Jenkins &gt; Global Tool ConfigurationNodeJS Plugin]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Jenkins Server Installation Guide]]></title>
+      <url>%2F2017%2F02%2F17%2Fjenkins-server-installation-guide%2F</url>
+      <content type="text"><![CDATA[Server Environment OS: Ubuntu 16.04 Java: v1.8 Install Java 1.8$ sudo add-apt-repository ppa:webupd8team/java $ sudo apt-get update $ sudo apt-get install oracle-java8-installer http://stackoverflow.com/questions/30177455/moving-from-jdk-1-7-to-jdk-1-8-on-ubuntu Next step Jenkins Master Node Installation Guide Jenkins Slave Agent Node Installation Guide Jenkins Build-up a task]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[LeetCode - Two Sum]]></title>
+      <url>%2F2017%2F01%2F04%2Fleetcode-two-sum%2F</url>
+      <content type="text"><![CDATA[Two SumGiven an array of integers, return indices of the two numbers such that they add up to a specific target.You may assume that each input would have exactly one solution. Example:Given nums = [2, 7, 11, 15], target = 9, Because nums[0] + nums[1] = 2 + 7 = 9, return [0, 1]. First Time Solution:/** * @param {number[]} nums * @param {number} target * @return {number[]} */ var twoSum = function(nums, target) { var resultSet = new Set(); nums.forEach((num, idx) =&gt; { for(var i = 0 ; i &lt; nums.length ; i += 1) { if (idx !== i) { var _num = nums[i] if ((num + _num) === target) { resultSet.add(idx) resultSet.add(i) } } } }) return Array.from(resultSet) }; Final Solution:/** * @param {number[]} nums * @param {number} target * @return {number[]} */ var twoSum = function(nums, target) { var result = [] var mapping = {} nums.some((num, idx) =&gt; { if (typeof mapping[target - num] !== &apos;undefined&apos;) { result.push(mapping[target - num], idx) return true } mapping[num] = idx return false }) return result }; Source code]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Writing an e-book with Gitbook]]></title>
+      <url>%2F2016%2F08%2F27%2Fwriting-an-e-book-with-gitbook%2F</url>
+      <content type="text"><![CDATA[GitBookGitBook 是用 node.js 的 npm 管理工具搭建的一種建立電子書的套件 支援多種檔案格式： 靜態網頁：這個是 Gitbook 預設的輸入格式 PDF : 需要安裝 gitbook-pdf 套件 eBook: 需要安裝 ebook-convert 單一 HTML 網頁，支援將內容輸出成一個單頁的 html JSON: 用在資料取得 在本機建立第一本電子書執行以下指令安裝 gitbook 套件，安裝之前記得要先安裝 npm $ sudo npm install -g gitbook-cli 安裝好之後在你要放電子書的目錄下建立這兩個檔案 README.md - 撰寫的內容為電子書的簡介 SUMMARY.md - 用來定義這本電子書的章節結構 Gitbook 最大的好處就是結構簡單，只有這兩個主要的檔案 設定好這兩個檔案內容後，接著執行下面的指令讓它自動去產生對應的檔案 $ gitbook init 執行後就會看到目錄被自動建立起來 架構完成之後，就可以快樂的撰寫屬於你的電子書啦！ 最後，別忘了如果想要預覽電子書的樣貌，可以執行 $ gitbook serve 這樣就會自動利用 node 啟動一個小型 HTTP Server Port 預設是 4000 啟動之後就擺著不要關掉 如此一來還可以享受 LiveReload 的即時更新效果喔！ 將電子書 Push 到 Gitbook 網站首先到 Gitbook 網站 建立一個新的電子書 接著會出現教你如何建立 Gitbook 的畫面 不過我們已經建立好了，可以直接跳過前往 Settings 畫面 順便一提，官網有推出他們一套 Gitbook Editor 也蠻方便的，有興趣可以下載試試看 你會看到熟悉的 Git URL 這個 URL 就是讓你用 Git 把本機寫好的電子書 Push 到 Gitbook 網站上 成功 Push 後，接著要連結 Github 的 Repository 連結 Github Repository首先到 Gitbook 電子書的 Settings 畫面，設定要連結的 Repository (設定之前不要忘了先去 Github 建立該 Repository) 如果你名字沒設定錯誤 在回到同一個地方會發現多一個按鈕 Add a deployment webhook 不要猶豫的按下去 這個主要是為了讓你的 Github 上的 Repository 可以跟 Gitbook 溝通！ 都設定好了之後，你就可以嘗試把你本機的電子書內容 Push 到你的 Github 上 接著你就會在 Gitbook Builds 畫面上看到 Github 幫你自動部署到 Gitbook 上進行 Build 的動作 等待全部都建置完成 就可以在網站上直接閱讀了！]]></content>
+    </entry>
+
+    
+  
+  
+</search>

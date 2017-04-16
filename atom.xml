@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>RyHao</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://ryhao.github.io/"/>
+  <updated>2017-04-16T09:01:04.809Z</updated>
+  <id>https://ryhao.github.io/</id>
+  
+  <author>
+    <name>RyHao</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Flow - installation</title>
+    <link href="https://ryhao.github.io/2017/04/16/flow-installation/"/>
+    <id>https://ryhao.github.io/2017/04/16/flow-installation/</id>
+    <published>2017-04-16T08:07:28.000Z</published>
+    <updated>2017-04-16T09:01:04.809Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Flow-是什麼？"><a href="#Flow-是什麼？" class="headerlink" title="Flow 是什麼？"></a>Flow 是什麼？</h2><p>Flow 是由 Facebook 開發出來的一個型別檢查工具，是為了修補 JavaScript 弱型別的問題，使得在開發上大大提升程式碼的可讀性和可維護性。</p>
+<a id="more"></a>
+<p>這篇文章主要是為了記錄安裝 Flow 遇到的一些問題，以防未來老人痴呆什麼都不記得，隨著年齡增長，記性總是越來越差，廢話不多說，就開始吧。</p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>這次發現 Flow 的官網改版之後其實變得好讀很多，沒有太多廢話的資訊，安裝步驟也很明確，基本上 Follow 官網的<a href="https://flow.org/en/docs/install/" target="_blank" rel="external">安裝步驟</a>根本簡單上手。</p>
+<h4 id="Setup-Compiler"><a href="#Setup-Compiler" class="headerlink" title="Setup Compiler"></a>Setup Compiler</h4><p><img src="images/flow-compiler.png" alt="Setup Compiler"></p>
+<p>很貼心的 Facebook 把兩種 Package management 的安裝步驟都分別列出了，只需要選擇你想要用的就好了，另外 Compiler 則分為兩種 Babel 和 flow-remove-types，Babel 應該是眾所皆知的用來轉換 JavaScript 語法的工具了，搭配上 flow 的 preset 就可以輕易的把 Flow type annotations 移除，而flow-remove-types 則是一個輕量級的工具，專為 Flow 設計用來移除 Flow type annotations，如果你的開發環境完全不需要用到 Babel 事實上選用 flow-remove-types 當作 compiler 會比較好。</p>
+<h4 id="Setup-Flow"><a href="#Setup-Flow" class="headerlink" title="Setup Flow"></a>Setup Flow</h4><p><img src="images/flow-setup.png" alt="Setup Flow"></p>
+<p>因為我是選擇 yarn 安裝，這裡遇到一個問題，最後的 Note 寫到 <code>you may need to run flow init before executing yarn run flow.</code> 但是如果你沒有把 flow 安裝在 global 根本就找不到 flow 這個指令，這邊有兩個選擇</p>
+<ol>
+<li><p>將 flow-bin 安裝在 global 環境</p>
+<pre><code>yarn global add flow-bin
+</code></pre><p>接著再執行 flow 初始化</p>
+<pre><code>flow init
+</code></pre></li>
+<li><p>因為 flow-bin 已經安裝在 local 了，所以其實可以直接執行初始化指令</p>
+<pre><code>yarn run flow init
+</code></pre></li>
+</ol>
+<p>以上就是簡單的 Flow 安裝，開始使用 Flow 進行開發吧！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Flow-是什麼？&quot;&gt;&lt;a href=&quot;#Flow-是什麼？&quot; class=&quot;headerlink&quot; title=&quot;Flow 是什麼？&quot;&gt;&lt;/a&gt;Flow 是什麼？&lt;/h2&gt;&lt;p&gt;Flow 是由 Facebook 開發出來的一個型別檢查工具，是為了修補 JavaScript 弱型別的問題，使得在開發上大大提升程式碼的可讀性和可維護性。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="https://ryhao.github.io/categories/javascript/"/>
+    
+    
+      <category term="Flow" scheme="https://ryhao.github.io/tags/flow/"/>
+    
+      <category term="Type Checker" scheme="https://ryhao.github.io/tags/type-checker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode - 3Sum Closest</title>
+    <link href="https://ryhao.github.io/2017/04/08/leetcode-3sum-closest/"/>
+    <id>https://ryhao.github.io/2017/04/08/leetcode-3sum-closest/</id>
+    <published>2017-04-08T08:31:43.000Z</published>
+    <updated>2017-04-16T09:01:04.825Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="3Sum-Closest"><a href="#3Sum-Closest" class="headerlink" title="3Sum Closest"></a>3Sum Closest</h1><p>Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution.</p>
+<pre><code>For example, given array S = {-1 2 1 -4}, and target = 1.
+
+The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+</code></pre><a id="more"></a>
+<h4 id="Final-Solution"><a href="#Final-Solution" class="headerlink" title="Final Solution:"></a>Final Solution:</h4><pre><code>class Solution(object):
+    def threeSumClosest(self, nums, target):
+        &quot;&quot;&quot;
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        &quot;&quot;&quot;
+        nums.sort()
+        final_sum = nums[0] + nums[1] + nums[2]
+        for i in range(len(nums) - 2):
+            j, k = i+1, len(nums) - 1
+            while j &lt; k:
+                sum = nums[i] + nums[j] + nums[k]
+                if sum == target:
+                    return sum
+                if abs(sum - target) &lt; abs(final_sum - target):
+                    final_sum = sum
+                if sum &lt; target:
+                    j += 1
+                elif sum &gt; target:
+                    k -= 1
+        return final_sum
+</code></pre><p><a href="https://github.com/RyHao/LeetCode/blob/master/Python/src/three_sum_closest.py" title="Source code" target="_blank" rel="external">Source code</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;3Sum-Closest&quot;&gt;&lt;a href=&quot;#3Sum-Closest&quot; class=&quot;headerlink&quot; title=&quot;3Sum Closest&quot;&gt;&lt;/a&gt;3Sum Closest&lt;/h1&gt;&lt;p&gt;Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. Return the sum of the three integers. You may assume that each input would have exactly one solution.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;For example, given array S = {-1 2 1 -4}, and target = 1.
+
+The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="Programming" scheme="https://ryhao.github.io/categories/programming/"/>
+    
+    
+      <category term="LeetCode" scheme="https://ryhao.github.io/tags/leetcode/"/>
+    
+      <category term="Two Pointers" scheme="https://ryhao.github.io/tags/two-pointers/"/>
+    
+      <category term="Array" scheme="https://ryhao.github.io/tags/array/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode - Length Of Longest Substring</title>
+    <link href="https://ryhao.github.io/2017/04/04/leetcode-length-of-longest-substring/"/>
+    <id>https://ryhao.github.io/2017/04/04/leetcode-length-of-longest-substring/</id>
+    <published>2017-04-04T08:16:46.000Z</published>
+    <updated>2017-04-16T09:01:04.825Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Longest-Substring-Without-Repeating-Characters"><a href="#Longest-Substring-Without-Repeating-Characters" class="headerlink" title="Longest Substring Without Repeating Characters"></a>Longest Substring Without Repeating Characters</h1><p>Given a string, find the length of the longest substring without repeating characters.</p>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h4><p>Given <code>abcabcbb</code>, the answer is <code>abc</code>, which the length is 3.</p>
+<p>Given <code>bbbbb</code>, the answer is <code>b</code>, with the length of 1.</p>
+<p>Given <code>pwwkew</code>, the answer is <code>wke</code>, with the length of 3. Note that the answer must be a substring, <code>pwke</code> is a subsequence and not a substring.</p>
+<a id="more"></a>
+<h4 id="First-Time-Solution"><a href="#First-Time-Solution" class="headerlink" title="First Time Solution:"></a>First Time Solution:</h4><pre><code>/**
+* @param {string} s
+* @return {number}
+*/
+var lengthOfLongestSubstring = function(s) {
+        if (!s.length) return 0;
+        var start = 0;
+        var maxLength = 0;
+        var charMap = new Map();
+        for (var i = 0 ; i &lt; s.length ; i += 1) {
+                var c = s[i];
+                if (charMap.has(c) &amp;&amp; start &lt;= charMap.get(c)) {
+                        start = charMap.get(c) + 1;
+                } else {
+                        maxLength = Math.max(maxLength, i - start + 1);
+                }
+                charMap.set(c, i);
+        }
+        return maxLength;
+};            
+</code></pre><h4 id="Final-Solution"><a href="#Final-Solution" class="headerlink" title="Final Solution:"></a>Final Solution:</h4><pre><code>/**
+* @param {string} s
+* @return {number}
+*/
+var lengthOfLongestSubstring = function (s) {
+    const map = {};
+    var left = 0;
+
+    return s.split(&apos;&apos;).reduce((max, v, i) =&gt; {
+        left = map[v] &gt;= left ? map[v] + 1 : left;
+        map[v] = i;
+        return Math.max(max, i - left + 1);
+    }, 0);
+};
+</code></pre><p><a href="https://github.com/RyHao/LeetCode/blob/master/JavaScript/src/lengthOfLongestSubstring.js" title="Source code" target="_blank" rel="external">Source code</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Longest-Substring-Without-Repeating-Characters&quot;&gt;&lt;a href=&quot;#Longest-Substring-Without-Repeating-Characters&quot; class=&quot;headerlink&quot; title=&quot;Longest Substring Without Repeating Characters&quot;&gt;&lt;/a&gt;Longest Substring Without Repeating Characters&lt;/h1&gt;&lt;p&gt;Given a string, find the length of the longest substring without repeating characters.&lt;/p&gt;
+&lt;h4 id=&quot;Example&quot;&gt;&lt;a href=&quot;#Example&quot; class=&quot;headerlink&quot; title=&quot;Example:&quot;&gt;&lt;/a&gt;Example:&lt;/h4&gt;&lt;p&gt;Given &lt;code&gt;abcabcbb&lt;/code&gt;, the answer is &lt;code&gt;abc&lt;/code&gt;, which the length is 3.&lt;/p&gt;
+&lt;p&gt;Given &lt;code&gt;bbbbb&lt;/code&gt;, the answer is &lt;code&gt;b&lt;/code&gt;, with the length of 1.&lt;/p&gt;
+&lt;p&gt;Given &lt;code&gt;pwwkew&lt;/code&gt;, the answer is &lt;code&gt;wke&lt;/code&gt;, with the length of 3. Note that the answer must be a substring, &lt;code&gt;pwke&lt;/code&gt; is a subsequence and not a substring.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Programming" scheme="https://ryhao.github.io/categories/programming/"/>
+    
+    
+      <category term="LeetCode" scheme="https://ryhao.github.io/tags/leetcode/"/>
+    
+      <category term="Two Pointers" scheme="https://ryhao.github.io/tags/two-pointers/"/>
+    
+      <category term="Hash Table" scheme="https://ryhao.github.io/tags/hash-table/"/>
+    
+      <category term="String" scheme="https://ryhao.github.io/tags/string/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Jenkins Build-up a task</title>
+    <link href="https://ryhao.github.io/2017/02/20/jenkins-build-up-a-task/"/>
+    <id>https://ryhao.github.io/2017/02/20/jenkins-build-up-a-task/</id>
+    <published>2017-02-20T04:11:01.000Z</published>
+    <updated>2017-04-16T09:01:04.813Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<a id="more"></a>
+<h3 id="Click-新增作業"><a href="#Click-新增作業" class="headerlink" title="Click 新增作業"></a>Click 新增作業</h3><p><img src="images/click-new-job.png" alt="New Job"></p>
+<h3 id="建置-free-style-專案"><a href="#建置-free-style-專案" class="headerlink" title="建置 free style 專案"></a>建置 free style 專案</h3><p><img src="images/free-style.png" alt="Free Style Project"></p>
+<h3 id="原始碼管理-Git"><a href="#原始碼管理-Git" class="headerlink" title="原始碼管理 - Git"></a>原始碼管理 - Git</h3><ol>
+<li>Put private key in Crediential</li>
+<li>Put public key in gitlab</li>
+</ol>
+<h4 id="How-to-gen-key"><a href="#How-to-gen-key" class="headerlink" title="How to gen key"></a>How to gen key</h4><pre><code>ssh-keygen -t rsa -C &quot;test@climax.com.tw&quot;
+
+pub: cat ~/.ssh/id_rsa.pub
+
+private: cat ~/.ssh/id_rsa
+</code></pre><blockquote>
+<p><a href="http://10.1.2.150:53180/help/ssh/README" target="_blank" rel="external">http://10.1.2.150:53180/help/ssh/README</a></p>
+</blockquote>
+<h4 id="Add-Credentials-Keys"><a href="#Add-Credentials-Keys" class="headerlink" title="Add Credentials Keys"></a>Add Credentials Keys</h4><p><img src="images/add-key-1.png" alt="Add Credentials"></p>
+<p>Domain: Global credentials (unrestricted)</p>
+<p>Kind: SSH Username with private key</p>
+<p>Username: jenkins</p>
+<p>Privae Key: From the Jenkins master ~/.ssh</p>
+<p><img src="images/add-key-2.png" alt="Add Credentials"></p>
+<h4 id="Set-the-repository-URL-and-change-the-ssh-key"><a href="#Set-the-repository-URL-and-change-the-ssh-key" class="headerlink" title="Set the repository URL and change the ssh key"></a>Set the repository URL and change the ssh key</h4><p><img src="images/git-source.png" alt="Git"></p>
+<h3 id="Build-Trigger"><a href="#Build-Trigger" class="headerlink" title="Build Trigger"></a>Build Trigger</h3><p><img src="images/build-trigger.png" alt="Build Trigger"></p>
+<h3 id="建置環境-case-by-case"><a href="#建置環境-case-by-case" class="headerlink" title="建置環境 (case by case)"></a>建置環境 (case by case)</h3><p><img src="images/build-env.png" alt="Build Env"></p>
+<h3 id="建置和建置後動作-case-by-case"><a href="#建置和建置後動作-case-by-case" class="headerlink" title="建置和建置後動作 (case by case)"></a>建置和建置後動作 (case by case)</h3><p><img src="images/build-setting.png" alt="Build Setting"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+    
+    </summary>
+    
+      <category term="DevOps" scheme="https://ryhao.github.io/categories/devops/"/>
+    
+    
+      <category term="CI" scheme="https://ryhao.github.io/tags/ci/"/>
+    
+      <category term="Jenkins" scheme="https://ryhao.github.io/tags/jenkins/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Jenkins Slave Agent Node Installation Guide</title>
+    <link href="https://ryhao.github.io/2017/02/19/jenkins-slave-agent-node-installation-guide/"/>
+    <id>https://ryhao.github.io/2017/02/19/jenkins-slave-agent-node-installation-guide/</id>
+    <published>2017-02-19T04:10:31.000Z</published>
+    <updated>2017-04-16T09:01:04.821Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>Master node will start the slave agent on the slave machne via SSH.</li>
+<li>Automatic SSH login without password from master node to the slave node is needed.</li>
+<li>Master node will be running as a specific user called Jenkins to start the slave agent.</li>
+</ul>
+<a id="more"></a>
+<h3 id="SSH-Login-to-Jenkins-master-node"><a href="#SSH-Login-to-Jenkins-master-node" class="headerlink" title="SSH Login to Jenkins master node"></a>SSH Login to Jenkins master node</h3><pre><code>$ ssh $USER@$IP
+</code></pre><blockquote>
+<p>$USER is the master server user name.</p>
+<p>$IP is the master server ip</p>
+</blockquote>
+<h3 id="Switch-to-jenkins-user"><a href="#Switch-to-jenkins-user" class="headerlink" title="Switch to jenkins user"></a>Switch to jenkins user</h3><pre><code>$ sudo -iu jenkins
+</code></pre><h3 id="Create-a-ssh-key-if-the-ssh-key-not-exist"><a href="#Create-a-ssh-key-if-the-ssh-key-not-exist" class="headerlink" title="Create a ssh key if the ssh key not exist."></a>Create a ssh key if the ssh key not exist.</h3><pre><code>$ ssh-keygen -t rsa
+</code></pre><h3 id="Create-a-ssh-folder-to-slave-server"><a href="#Create-a-ssh-folder-to-slave-server" class="headerlink" title="Create a .ssh folder to slave server"></a>Create a .ssh folder to slave server</h3><pre><code>$ ssh $USER@$IP mkdir -p .ssh
+</code></pre><blockquote>
+<p>$USER is the slave agent user name.</p>
+<p>$IP is the slave agent server ip</p>
+</blockquote>
+<h3 id="Write-the-ssh-key-to-the-authorized-keys-of-slave-server"><a href="#Write-the-ssh-key-to-the-authorized-keys-of-slave-server" class="headerlink" title="Write the ssh key to the authorized_keys of slave server"></a>Write the ssh key to the authorized_keys of slave server</h3><pre><code>$ cat .ssh/id_rsa.pub | ssh $USER@$IP &apos;cat &gt;&gt; .ssh/authorized_keys&apos;
+</code></pre><blockquote>
+<p>$USER is the slave agent user name.</p>
+<p>$IP is the slave agent server ip</p>
+</blockquote>
+<h3 id="SSH-to-slave-agent-server"><a href="#SSH-to-slave-agent-server" class="headerlink" title="SSH to slave agent server"></a>SSH to slave agent server</h3><pre><code>$ ssh $USER@$IP 
+</code></pre><blockquote>
+<p>$USER is the slave agent user name.</p>
+<p>$IP is the slave agent server ip</p>
+</blockquote>
+<h3 id="Create-the-bin-folder"><a href="#Create-the-bin-folder" class="headerlink" title="Create the bin folder"></a>Create the bin folder</h3><pre><code>$ mkdir bin &amp;&amp; cd bin/
+</code></pre><h3 id="Download-the-jar-file-from-master-server"><a href="#Download-the-jar-file-from-master-server" class="headerlink" title="Download the .jar file from master server"></a>Download the .jar file from master server</h3><pre><code>$ wget http://$URL/jnlpJars/slave.jar
+</code></pre><blockquote>
+<p>$URL is your jenkins master server url. ex: 10.0.1.1:8080</p>
+</blockquote>
+<h3 id="Check-the-java-has-installed-on-slave-agent-server-if-no-please-install-it"><a href="#Check-the-java-has-installed-on-slave-agent-server-if-no-please-install-it" class="headerlink" title="Check the java has installed on slave agent server, if no please install it."></a>Check the java has installed on slave agent server, if no please install it.</h3><h3 id="Go-to-管理-Jenkins-gt-管理節點-on-jenkins-web"><a href="#Go-to-管理-Jenkins-gt-管理節點-on-jenkins-web" class="headerlink" title="Go to 管理 Jenkins &gt; 管理節點 on jenkins web."></a>Go to <code>管理 Jenkins &gt; 管理節點</code> on jenkins web.</h3><h3 id="Click-New-Node-新增節點"><a href="#Click-New-Node-新增節點" class="headerlink" title="Click New Node/新增節點"></a>Click <code>New Node</code>/<code>新增節點</code></h3><p><img src="images/new-node.png" alt="New Node"></p>
+<h3 id="New-Node-Settings"><a href="#New-Node-Settings" class="headerlink" title="New Node Settings"></a>New Node Settings</h3><p><img src="images/new-node-setting.png" alt="New Node Settings"></p>
+<h3 id="Go-back-to-check-connection"><a href="#Go-back-to-check-connection" class="headerlink" title="Go back to check connection"></a>Go back to check connection</h3><p><img src="images/node-connection.png" alt="Node connection"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;Master node will start the slave agent on the slave machne via SSH.&lt;/li&gt;
+&lt;li&gt;Automatic SSH login without password from master node to the slave node is needed.&lt;/li&gt;
+&lt;li&gt;Master node will be running as a specific user called Jenkins to start the slave agent.&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="DevOps" scheme="https://ryhao.github.io/categories/devops/"/>
+    
+    
+      <category term="CI" scheme="https://ryhao.github.io/tags/ci/"/>
+    
+      <category term="Jenkins" scheme="https://ryhao.github.io/tags/jenkins/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Jenkins Master Node Installation Guide</title>
+    <link href="https://ryhao.github.io/2017/02/18/jenkins-master-node-installation-guide/"/>
+    <id>https://ryhao.github.io/2017/02/18/jenkins-master-node-installation-guide/</id>
+    <published>2017-02-18T04:10:15.000Z</published>
+    <updated>2017-04-16T09:01:04.821Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Install-Jenkins"><a href="#Install-Jenkins" class="headerlink" title="Install Jenkins"></a>Install Jenkins</h3><pre><code>$ wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
+
+$ sudo sh -c &apos;echo deb http://pkg.jenkins-ci.org/debian binary/ &gt; /etc/apt/sources.list.d/jenkins.list&apos;
+
+$ sudo apt-get update
+
+$ sudo apt-get install jenkins
+
+$ sudo service jenkins start | stop | restart
+</code></pre><p>Go to browser.   <a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a></p>
+<blockquote>
+<p><a href="http://www.arthurtoday.com/2015/04/ubuntu-install-jenkins-by-atp.html" target="_blank" rel="external">http://www.arthurtoday.com/2015/04/ubuntu-install-jenkins-by-atp.html</a></p>
+</blockquote>
+<a id="more"></a>
+<h3 id="My-Jenkins-Plugins-List"><a href="#My-Jenkins-Plugins-List" class="headerlink" title="My Jenkins Plugins List"></a>My Jenkins Plugins List</h3><ul>
+<li>Backup plugin</li>
+<li>cucumber-slack-notifier (option)</li>
+<li>Email Extension Plugin</li>
+<li>GitHub Organization Folder Plugin (option)</li>
+<li>GitLab Plugin</li>
+<li>NodeJS Plugin</li>
+<li>Simple Theme Plugin (option)</li>
+<li>Slack Notification Plugin</li>
+<li>SSH Slaves plugin</li>
+<li>Timestamper</li>
+<li>Workspace Cleanup Plugin</li>
+</ul>
+<h3 id="Jenkins-gt-System-Configuration"><a href="#Jenkins-gt-System-Configuration" class="headerlink" title="Jenkins &gt; System Configuration"></a>Jenkins &gt; System Configuration</h3><h4 id="Email-Extension-Plugin"><a href="#Email-Extension-Plugin" class="headerlink" title="Email Extension Plugin"></a>Email Extension Plugin</h4><p><img src="images/email-extension.png" alt="Email extension"></p>
+<h4 id="Email-Notification"><a href="#Email-Notification" class="headerlink" title="Email Notification"></a>Email Notification</h4><p><img src="images/email-notification.png" alt="Email notification"></p>
+<h4 id="Global-Slack-Notifier-Settings"><a href="#Global-Slack-Notifier-Settings" class="headerlink" title="Global Slack Notifier Settings"></a>Global Slack Notifier Settings</h4><p><img src="images/slack-notifier.png" alt="Slack notifier"></p>
+<h4 id="Simple-Theme-Plugin"><a href="#Simple-Theme-Plugin" class="headerlink" title="Simple Theme Plugin"></a>Simple Theme Plugin</h4><p>CSS: <a href="http://afonsof.com/jenkins-material-theme/dist/material-indigo.css" target="_blank" rel="external">http://afonsof.com/jenkins-material-theme/dist/material-indigo.css</a></p>
+<p><img src="images/simple-theme-plugin.png" alt="Theme"></p>
+<h3 id="Jenkins-gt-Global-Tool-Configuration"><a href="#Jenkins-gt-Global-Tool-Configuration" class="headerlink" title="Jenkins &gt; Global Tool Configuration"></a>Jenkins &gt; Global Tool Configuration</h3><h4 id="NodeJS-Plugin"><a href="#NodeJS-Plugin" class="headerlink" title="NodeJS Plugin"></a>NodeJS Plugin</h4><p><img src="images/nodejs-plugin.png" alt="NodeJS plugin"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Install-Jenkins&quot;&gt;&lt;a href=&quot;#Install-Jenkins&quot; class=&quot;headerlink&quot; title=&quot;Install Jenkins&quot;&gt;&lt;/a&gt;Install Jenkins&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;$ wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
+
+$ sudo sh -c &amp;apos;echo deb http://pkg.jenkins-ci.org/debian binary/ &amp;gt; /etc/apt/sources.list.d/jenkins.list&amp;apos;
+
+$ sudo apt-get update
+
+$ sudo apt-get install jenkins
+
+$ sudo service jenkins start | stop | restart
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Go to browser.   &lt;a href=&quot;http://localhost:8080&quot;&gt;http://localhost:8080&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.arthurtoday.com/2015/04/ubuntu-install-jenkins-by-atp.html&quot;&gt;http://www.arthurtoday.com/2015/04/ubuntu-install-jenkins-by-atp.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="DevOps" scheme="https://ryhao.github.io/categories/devops/"/>
+    
+    
+      <category term="CI" scheme="https://ryhao.github.io/tags/ci/"/>
+    
+      <category term="Jenkins" scheme="https://ryhao.github.io/tags/jenkins/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Jenkins Server Installation Guide</title>
+    <link href="https://ryhao.github.io/2017/02/17/jenkins-server-installation-guide/"/>
+    <id>https://ryhao.github.io/2017/02/17/jenkins-server-installation-guide/</id>
+    <published>2017-02-17T04:09:49.000Z</published>
+    <updated>2017-04-16T09:01:04.821Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Server-Environment"><a href="#Server-Environment" class="headerlink" title="Server Environment"></a>Server Environment</h3><ul>
+<li>OS: Ubuntu 16.04</li>
+<li>Java: v1.8 </li>
+</ul>
+<h3 id="Install-Java-1-8"><a href="#Install-Java-1-8" class="headerlink" title="Install Java 1.8"></a>Install Java 1.8</h3><pre><code>$ sudo add-apt-repository ppa:webupd8team/java 
+$ sudo apt-get update 
+$ sudo apt-get install oracle-java8-installer
+</code></pre><blockquote>
+<p><a href="http://stackoverflow.com/questions/30177455/moving-from-jdk-1-7-to-jdk-1-8-on-ubuntu" target="_blank" rel="external">http://stackoverflow.com/questions/30177455/moving-from-jdk-1-7-to-jdk-1-8-on-ubuntu</a></p>
+</blockquote>
+<h3 id="Next-step"><a href="#Next-step" class="headerlink" title="Next step"></a>Next step</h3><ol>
+<li><a href="/2017/02/18/jenkins-master-node-installation-guide/" title="Jenkins Master Node Installation Guide">Jenkins Master Node Installation Guide</a></li>
+<li><a href="/2017/02/19/jenkins-slave-agent-node-installation-guide/" title="Jenkins Slave Agent Node Installation Guide">Jenkins Slave Agent Node Installation Guide</a></li>
+<li><a href="/2017/02/20/jenkins-build-up-a-task/" title="Jenkins Build-up a task">Jenkins Build-up a task</a>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Server-Environment&quot;&gt;&lt;a href=&quot;#Server-Environment&quot; class=&quot;headerlink&quot; title=&quot;Server Environment&quot;&gt;&lt;/a&gt;Server Environment&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+    
+    </summary>
+    
+      <category term="DevOps" scheme="https://ryhao.github.io/categories/devops/"/>
+    
+    
+      <category term="CI" scheme="https://ryhao.github.io/tags/ci/"/>
+    
+      <category term="Jenkins" scheme="https://ryhao.github.io/tags/jenkins/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode - Two Sum</title>
+    <link href="https://ryhao.github.io/2017/01/04/leetcode-two-sum/"/>
+    <id>https://ryhao.github.io/2017/01/04/leetcode-two-sum/</id>
+    <published>2017-01-03T16:08:38.000Z</published>
+    <updated>2017-04-16T09:01:04.825Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h1><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.<br>You may assume that each input would have exactly one solution.</p>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h4><p>Given nums = <code>[2, 7, 11, 15]</code>, target = <code>9</code>,</p>
+<p>Because <code>nums[0] + nums[1] = 2 + 7 = 9</code>, return <code>[0, 1]</code>.</p>
+<a id="more"></a>
+<h4 id="First-Time-Solution"><a href="#First-Time-Solution" class="headerlink" title="First Time Solution:"></a>First Time Solution:</h4><pre><code>/**
+* @param {number[]} nums
+* @param {number} target
+* @return {number[]}
+*/
+var twoSum = function(nums, target) {
+        var resultSet = new Set();
+        nums.forEach((num, idx) =&gt; {
+                for(var i = 0 ; i &lt; nums.length ; i += 1) {
+                        if (idx !== i) {
+                                var _num = nums[i]   
+                                if ((num + _num) === target) {
+                                        resultSet.add(idx)
+                                        resultSet.add(i)
+                                }
+                        }
+                }
+        })
+        return Array.from(resultSet)
+};
+</code></pre><h4 id="Final-Solution"><a href="#Final-Solution" class="headerlink" title="Final Solution:"></a>Final Solution:</h4><pre><code>/**
+* @param {number[]} nums
+* @param {number} target
+* @return {number[]}
+*/
+var twoSum = function(nums, target) {
+        var result = []
+        var mapping = {}
+        nums.some((num, idx) =&gt; {
+                if (typeof mapping[target - num] !== &apos;undefined&apos;) {
+                        result.push(mapping[target - num], idx)
+                        return true
+                }
+                mapping[num] = idx
+                return false
+        })
+        return result
+};
+</code></pre><p><a href="https://github.com/RyHao/LeetCode/blob/master/JavaScript/src/twoSum.js" title="Source code" target="_blank" rel="external">Source code</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Two-Sum&quot;&gt;&lt;a href=&quot;#Two-Sum&quot; class=&quot;headerlink&quot; title=&quot;Two Sum&quot;&gt;&lt;/a&gt;Two Sum&lt;/h1&gt;&lt;p&gt;Given an array of integers, return indices of the two numbers such that they add up to a specific target.&lt;br&gt;You may assume that each input would have exactly one solution.&lt;/p&gt;
+&lt;h4 id=&quot;Example&quot;&gt;&lt;a href=&quot;#Example&quot; class=&quot;headerlink&quot; title=&quot;Example:&quot;&gt;&lt;/a&gt;Example:&lt;/h4&gt;&lt;p&gt;Given nums = &lt;code&gt;[2, 7, 11, 15]&lt;/code&gt;, target = &lt;code&gt;9&lt;/code&gt;,&lt;/p&gt;
+&lt;p&gt;Because &lt;code&gt;nums[0] + nums[1] = 2 + 7 = 9&lt;/code&gt;, return &lt;code&gt;[0, 1]&lt;/code&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Programming" scheme="https://ryhao.github.io/categories/programming/"/>
+    
+    
+      <category term="LeetCode" scheme="https://ryhao.github.io/tags/leetcode/"/>
+    
+      <category term="Array" scheme="https://ryhao.github.io/tags/array/"/>
+    
+      <category term="Hash Table" scheme="https://ryhao.github.io/tags/hash-table/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Writing an e-book with Gitbook</title>
+    <link href="https://ryhao.github.io/2016/08/27/writing-an-e-book-with-gitbook/"/>
+    <id>https://ryhao.github.io/2016/08/27/writing-an-e-book-with-gitbook/</id>
+    <published>2016-08-27T14:27:06.000Z</published>
+    <updated>2017-04-16T09:01:04.825Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="GitBook"><a href="#GitBook" class="headerlink" title="GitBook"></a>GitBook</h2><p>GitBook 是用 node.js 的 npm 管理工具搭建的一種建立電子書的套件</p>
+<p>支援多種檔案格式：</p>
+<ol>
+<li>靜態網頁：這個是 Gitbook 預設的輸入格式</li>
+<li>PDF : 需要安裝 <a href="https://github.com/GitbookIO/gitbook-pdf" target="_blank" rel="external">gitbook-pdf 套件</a></li>
+<li>eBook: 需要安裝 ebook-convert</li>
+<li>單一 HTML 網頁，支援將內容輸出成一個單頁的 html</li>
+<li>JSON: 用在資料取得</li>
+</ol>
+<a id="more"></a>
+<h2 id="在本機建立第一本電子書"><a href="#在本機建立第一本電子書" class="headerlink" title="在本機建立第一本電子書"></a>在本機建立第一本電子書</h2><p>執行以下指令安裝 <a href="https://github.com/GitbookIO/gitbook" target="_blank" rel="external">gitbook 套件</a>，安裝之前記得要先安裝 npm</p>
+<pre><code>$ sudo npm install -g gitbook-cli
+</code></pre><p>安裝好之後在你要放電子書的目錄下建立這兩個檔案</p>
+<ul>
+<li>README.md - 撰寫的內容為電子書的簡介</li>
+</ul>
+<p><img src="images/READEME.png" alt="README Sample"></p>
+<ul>
+<li>SUMMARY.md - 用來定義這本電子書的章節結構</li>
+</ul>
+<p><img src="images/SUMMARY.png" alt="SUMMARY Sample"></p>
+<p>Gitbook 最大的好處就是結構簡單，只有這兩個主要的檔案</p>
+<p>設定好這兩個檔案內容後，接著執行下面的指令讓它自動去產生對應的檔案</p>
+<pre><code>$ gitbook init
+</code></pre><p>執行後就會看到目錄被自動建立起來</p>
+<p><img src="images/file-structure.png" alt="File Structure"></p>
+<p>架構完成之後，就可以快樂的撰寫屬於你的電子書啦！</p>
+<p>最後，別忘了如果想要預覽電子書的樣貌，可以執行</p>
+<pre><code>$ gitbook serve
+</code></pre><p>這樣就會自動利用 node 啟動一個小型 HTTP Server Port 預設是 4000</p>
+<p>啟動之後就擺著不要關掉</p>
+<p>如此一來還可以享受 LiveReload 的即時更新效果喔！</p>
+<h2 id="將電子書-Push-到-Gitbook-網站"><a href="#將電子書-Push-到-Gitbook-網站" class="headerlink" title="將電子書 Push 到 Gitbook 網站"></a>將電子書 Push 到 Gitbook 網站</h2><p>首先到 <a href="https://www.gitbook.io" target="_blank" rel="external">Gitbook 網站</a> 建立一個新的電子書</p>
+<p><img src="images/create-gitbook.png" alt="Create Gitbook"></p>
+<p>接著會出現教你如何建立 Gitbook 的畫面</p>
+<p><img src="images/turtor-gitbook.png" alt="Create Gitbook"></p>
+<p>不過我們已經建立好了，可以直接跳過前往 Settings 畫面</p>
+<p>順便一提，官網有推出他們一套 Gitbook Editor 也蠻方便的，有興趣可以下載試試看</p>
+<p>你會看到熟悉的 Git URL 這個 URL 就是讓你用 Git 把本機寫好的電子書 Push 到 Gitbook 網站上</p>
+<p><img src="images/git-url.png" alt="Git Url"></p>
+<p>成功 Push 後，接著要連結 Github 的 Repository</p>
+<h2 id="連結-Github-Repository"><a href="#連結-Github-Repository" class="headerlink" title="連結 Github Repository"></a>連結 Github Repository</h2><p>首先到 Gitbook 電子書的 Settings 畫面，設定要連結的 Repository (設定之前不要忘了先去 Github 建立該 Repository)</p>
+<p><img src="images/github-setting.png" alt="Github Setting"></p>
+<p>如果你名字沒設定錯誤 在回到同一個地方會發現多一個按鈕 <code>Add a deployment webhook</code> 不要猶豫的按下去</p>
+<p><img src="images/add-webhook.png" alt="Add Hook"></p>
+<p>這個主要是為了讓你的 Github 上的 Repository 可以跟 Gitbook 溝通！</p>
+<p>都設定好了之後，你就可以嘗試把你本機的電子書內容 Push 到你的 Github 上</p>
+<p><img src="images/github.png" alt="Github"></p>
+<p>接著你就會在 Gitbook Builds 畫面上看到 Github 幫你自動部署到 Gitbook 上進行 Build 的動作</p>
+<p><img src="images/auto-build.png" alt="Auto Build"></p>
+<p>等待全部都建置完成</p>
+<p><img src="images/build-finish.png" alt="Build Finish"></p>
+<p>就可以在網站上直接閱讀了！</p>
+<p><img src="images/gitbook-preview.png" alt="Gitbook Preview"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;GitBook&quot;&gt;&lt;a href=&quot;#GitBook&quot; class=&quot;headerlink&quot; title=&quot;GitBook&quot;&gt;&lt;/a&gt;GitBook&lt;/h2&gt;&lt;p&gt;GitBook 是用 node.js 的 npm 管理工具搭建的一種建立電子書的套件&lt;/p&gt;
+&lt;p&gt;支援多種檔案格式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;靜態網頁：這個是 Gitbook 預設的輸入格式&lt;/li&gt;
+&lt;li&gt;PDF : 需要安裝 &lt;a href=&quot;https://github.com/GitbookIO/gitbook-pdf&quot;&gt;gitbook-pdf 套件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;eBook: 需要安裝 ebook-convert&lt;/li&gt;
+&lt;li&gt;單一 HTML 網頁，支援將內容輸出成一個單頁的 html&lt;/li&gt;
+&lt;li&gt;JSON: 用在資料取得&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="Tool" scheme="https://ryhao.github.io/categories/tool/"/>
+    
+    
+      <category term="Gitbook" scheme="https://ryhao.github.io/tags/gitbook/"/>
+    
+  </entry>
+  
+</feed>

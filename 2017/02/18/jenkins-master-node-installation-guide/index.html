@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Ryan Lu,ryhao.tw@gmail.com"><title>Jenkins Master Node Installation Guide · RyHao</title><meta name="description" content="Install Jenkins$ wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
+
+$ sudo sh -c &amp;apos;echo deb http://pkg.jenkins-ci"><meta name="keywords" content="Hexo,HTML,CSS,JS,JavaScript,React,Front-End"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">RyHao</a></h3><div class="description"><p>Excelsior</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/RyanHCLu"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/ryanhclu"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/RyHao"><i class="fa fa-github"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai</a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">Home</a></li><li><a href="/about">About</a></li><li><a href="/archives">Archive</a></li><li><a href="/links">Links</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="/uploads/avatar.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Jenkins Master Node Installation Guide</a></h3></div><div class="post-content"><h3 id="Install-Jenkins"><a href="#Install-Jenkins" class="headerlink" title="Install Jenkins"></a>Install Jenkins</h3><pre><code>$ wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
+
+$ sudo sh -c &apos;echo deb http://pkg.jenkins-ci.org/debian binary/ &gt; /etc/apt/sources.list.d/jenkins.list&apos;
+
+$ sudo apt-get update
+
+$ sudo apt-get install jenkins
+
+$ sudo service jenkins start | stop | restart
+</code></pre><p>Go to browser.   <a href="http://localhost:8080" target="_blank" rel="external">http://localhost:8080</a></p>
+<blockquote>
+<p><a href="http://www.arthurtoday.com/2015/04/ubuntu-install-jenkins-by-atp.html" target="_blank" rel="external">http://www.arthurtoday.com/2015/04/ubuntu-install-jenkins-by-atp.html</a></p>
+</blockquote>
+<a id="more"></a>
+<h3 id="My-Jenkins-Plugins-List"><a href="#My-Jenkins-Plugins-List" class="headerlink" title="My Jenkins Plugins List"></a>My Jenkins Plugins List</h3><ul>
+<li>Backup plugin</li>
+<li>cucumber-slack-notifier (option)</li>
+<li>Email Extension Plugin</li>
+<li>GitHub Organization Folder Plugin (option)</li>
+<li>GitLab Plugin</li>
+<li>NodeJS Plugin</li>
+<li>Simple Theme Plugin (option)</li>
+<li>Slack Notification Plugin</li>
+<li>SSH Slaves plugin</li>
+<li>Timestamper</li>
+<li>Workspace Cleanup Plugin</li>
+</ul>
+<h3 id="Jenkins-gt-System-Configuration"><a href="#Jenkins-gt-System-Configuration" class="headerlink" title="Jenkins &gt; System Configuration"></a>Jenkins &gt; System Configuration</h3><h4 id="Email-Extension-Plugin"><a href="#Email-Extension-Plugin" class="headerlink" title="Email Extension Plugin"></a>Email Extension Plugin</h4><p><img src="images/email-extension.png" alt="Email extension"></p>
+<h4 id="Email-Notification"><a href="#Email-Notification" class="headerlink" title="Email Notification"></a>Email Notification</h4><p><img src="images/email-notification.png" alt="Email notification"></p>
+<h4 id="Global-Slack-Notifier-Settings"><a href="#Global-Slack-Notifier-Settings" class="headerlink" title="Global Slack Notifier Settings"></a>Global Slack Notifier Settings</h4><p><img src="images/slack-notifier.png" alt="Slack notifier"></p>
+<h4 id="Simple-Theme-Plugin"><a href="#Simple-Theme-Plugin" class="headerlink" title="Simple Theme Plugin"></a>Simple Theme Plugin</h4><p>CSS: <a href="http://afonsof.com/jenkins-material-theme/dist/material-indigo.css" target="_blank" rel="external">http://afonsof.com/jenkins-material-theme/dist/material-indigo.css</a></p>
+<p><img src="images/simple-theme-plugin.png" alt="Theme"></p>
+<h3 id="Jenkins-gt-Global-Tool-Configuration"><a href="#Jenkins-gt-Global-Tool-Configuration" class="headerlink" title="Jenkins &gt; Global Tool Configuration"></a>Jenkins &gt; Global Tool Configuration</h3><h4 id="NodeJS-Plugin"><a href="#NodeJS-Plugin" class="headerlink" title="NodeJS Plugin"></a>NodeJS Plugin</h4><p><img src="images/nodejs-plugin.png" alt="NodeJS plugin"></p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-02-18</span><i class="fa fa-comment-o"></i><a href="/2017/02/18/jenkins-master-node-installation-guide/#comments">Comments</a><i class="fa fa-tag"></i><a href="/categories/devops/" title="DevOps" class="tag">DevOps </a><a href="/tags/ci/" title="CI" class="tag">CI </a><a href="/tags/jenkins/" title="Jenkins" class="tag">Jenkins </a></div></div></div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=,https://ryhao.github.io/2017/02/18/jenkins-master-node-installation-guide/,RyHao,Jenkins Master Node Installation Guide,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/02/17/jenkins-server-installation-guide/" title="Jenkins Server Installation Guide" class="btn">Prev post</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/02/19/jenkins-slave-agent-node-installation-guide/" title="Jenkins Slave Agent Node Installation Guide" class="btn">Next post</a></li></ul></div><a id="comments"></a><div id="disqus_thread"></div><script>var disqus_shortname = 'ryanlugp';
+var disqus_identifier = '2017/02/18/jenkins-master-node-installation-guide/';
+var disqus_title = 'Jenkins Master Node Installation Guide';
+var disqus_url = 'https://ryhao.github.io/2017/02/18/jenkins-master-node-installation-guide/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//ryanlugp.disqus.com/count.js" async></script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-46467226-3', 'auto');
+ga('send', 'pageview');</script></body></html>

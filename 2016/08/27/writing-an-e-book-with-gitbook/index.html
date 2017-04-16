@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Ryan Lu,ryhao.tw@gmail.com"><title>Writing an e-book with Gitbook · RyHao</title><meta name="description" content="GitBookGitBook 是用 node.js 的 npm 管理工具搭建的一種建立電子書的套件
+支援多種檔案格式：
+
+靜態網頁：這個是 Gitbook 預設的輸入格式
+PDF : 需要安裝 gitbook-pdf 套件
+eBook: 需要安裝 ebook-convert
+單一 HTML 網頁，支"><meta name="keywords" content="Hexo,HTML,CSS,JS,JavaScript,React,Front-End"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">RyHao</a></h3><div class="description"><p>Excelsior</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/RyanHCLu"><i class="fa fa-twitter"></i></a></li><li><a href="https://www.facebook.com/ryanhclu"><i class="fa fa-facebook"></i></a></li><li><a href="https://github.com/RyHao"><i class="fa fa-github"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai</a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">Home</a></li><li><a href="/about">About</a></li><li><a href="/archives">Archive</a></li><li><a href="/links">Links</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="/uploads/avatar.jpg"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Writing an e-book with Gitbook</a></h3></div><div class="post-content"><h2 id="GitBook"><a href="#GitBook" class="headerlink" title="GitBook"></a>GitBook</h2><p>GitBook 是用 node.js 的 npm 管理工具搭建的一種建立電子書的套件</p>
+<p>支援多種檔案格式：</p>
+<ol>
+<li>靜態網頁：這個是 Gitbook 預設的輸入格式</li>
+<li>PDF : 需要安裝 <a href="https://github.com/GitbookIO/gitbook-pdf" target="_blank" rel="external">gitbook-pdf 套件</a></li>
+<li>eBook: 需要安裝 ebook-convert</li>
+<li>單一 HTML 網頁，支援將內容輸出成一個單頁的 html</li>
+<li>JSON: 用在資料取得</li>
+</ol>
+<a id="more"></a>
+<h2 id="在本機建立第一本電子書"><a href="#在本機建立第一本電子書" class="headerlink" title="在本機建立第一本電子書"></a>在本機建立第一本電子書</h2><p>執行以下指令安裝 <a href="https://github.com/GitbookIO/gitbook" target="_blank" rel="external">gitbook 套件</a>，安裝之前記得要先安裝 npm</p>
+<pre><code>$ sudo npm install -g gitbook-cli
+</code></pre><p>安裝好之後在你要放電子書的目錄下建立這兩個檔案</p>
+<ul>
+<li>README.md - 撰寫的內容為電子書的簡介</li>
+</ul>
+<p><img src="images/READEME.png" alt="README Sample"></p>
+<ul>
+<li>SUMMARY.md - 用來定義這本電子書的章節結構</li>
+</ul>
+<p><img src="images/SUMMARY.png" alt="SUMMARY Sample"></p>
+<p>Gitbook 最大的好處就是結構簡單，只有這兩個主要的檔案</p>
+<p>設定好這兩個檔案內容後，接著執行下面的指令讓它自動去產生對應的檔案</p>
+<pre><code>$ gitbook init
+</code></pre><p>執行後就會看到目錄被自動建立起來</p>
+<p><img src="images/file-structure.png" alt="File Structure"></p>
+<p>架構完成之後，就可以快樂的撰寫屬於你的電子書啦！</p>
+<p>最後，別忘了如果想要預覽電子書的樣貌，可以執行</p>
+<pre><code>$ gitbook serve
+</code></pre><p>這樣就會自動利用 node 啟動一個小型 HTTP Server Port 預設是 4000</p>
+<p>啟動之後就擺著不要關掉</p>
+<p>如此一來還可以享受 LiveReload 的即時更新效果喔！</p>
+<h2 id="將電子書-Push-到-Gitbook-網站"><a href="#將電子書-Push-到-Gitbook-網站" class="headerlink" title="將電子書 Push 到 Gitbook 網站"></a>將電子書 Push 到 Gitbook 網站</h2><p>首先到 <a href="https://www.gitbook.io" target="_blank" rel="external">Gitbook 網站</a> 建立一個新的電子書</p>
+<p><img src="images/create-gitbook.png" alt="Create Gitbook"></p>
+<p>接著會出現教你如何建立 Gitbook 的畫面</p>
+<p><img src="images/turtor-gitbook.png" alt="Create Gitbook"></p>
+<p>不過我們已經建立好了，可以直接跳過前往 Settings 畫面</p>
+<p>順便一提，官網有推出他們一套 Gitbook Editor 也蠻方便的，有興趣可以下載試試看</p>
+<p>你會看到熟悉的 Git URL 這個 URL 就是讓你用 Git 把本機寫好的電子書 Push 到 Gitbook 網站上</p>
+<p><img src="images/git-url.png" alt="Git Url"></p>
+<p>成功 Push 後，接著要連結 Github 的 Repository</p>
+<h2 id="連結-Github-Repository"><a href="#連結-Github-Repository" class="headerlink" title="連結 Github Repository"></a>連結 Github Repository</h2><p>首先到 Gitbook 電子書的 Settings 畫面，設定要連結的 Repository (設定之前不要忘了先去 Github 建立該 Repository)</p>
+<p><img src="images/github-setting.png" alt="Github Setting"></p>
+<p>如果你名字沒設定錯誤 在回到同一個地方會發現多一個按鈕 <code>Add a deployment webhook</code> 不要猶豫的按下去</p>
+<p><img src="images/add-webhook.png" alt="Add Hook"></p>
+<p>這個主要是為了讓你的 Github 上的 Repository 可以跟 Gitbook 溝通！</p>
+<p>都設定好了之後，你就可以嘗試把你本機的電子書內容 Push 到你的 Github 上</p>
+<p><img src="images/github.png" alt="Github"></p>
+<p>接著你就會在 Gitbook Builds 畫面上看到 Github 幫你自動部署到 Gitbook 上進行 Build 的動作</p>
+<p><img src="images/auto-build.png" alt="Auto Build"></p>
+<p>等待全部都建置完成</p>
+<p><img src="images/build-finish.png" alt="Build Finish"></p>
+<p>就可以在網站上直接閱讀了！</p>
+<p><img src="images/gitbook-preview.png" alt="Gitbook Preview"></p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2016-08-27</span><i class="fa fa-comment-o"></i><a href="/2016/08/27/writing-an-e-book-with-gitbook/#comments">Comments</a><i class="fa fa-tag"></i><a href="/categories/tool/" title="Tool" class="tag">Tool </a><a href="/tags/gitbook/" title="Gitbook" class="tag">Gitbook </a></div></div></div></div><div class="share"><div class="evernote"> <a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"> <a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"> <a href="http://twitter.com/home?status=,https://ryhao.github.io/2016/08/27/writing-an-e-book-with-gitbook/,RyHao,Writing an e-book with Gitbook,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a role="navigation" href="/2017/01/04/leetcode-two-sum/" title="LeetCode - Two Sum" class="btn">Next post</a></li></ul></div><a id="comments"></a><div id="disqus_thread"></div><script>var disqus_shortname = 'ryanlugp';
+var disqus_identifier = '2016/08/27/writing-an-e-book-with-gitbook/';
+var disqus_title = 'Writing an e-book with Gitbook';
+var disqus_url = 'https://ryhao.github.io/2016/08/27/writing-an-e-book-with-gitbook/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//ryanlugp.disqus.com/count.js" async></script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-46467226-3', 'auto');
+ga('send', 'pageview');</script></body></html>
